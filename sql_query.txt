@@ -1,0 +1,26 @@
+CREATE
+    TABLE
+        products(id INT,
+        name VARCHAR(256));
+ 
+CREATE
+    TABLE
+        categories(id INT,
+        name VARCHAR(256));
+ 
+CREATE
+    TABLE
+        product_categories(product_id INT,
+        category_id INT);
+ 
+   
+ SELECT
+    p.name,
+    ISNULL(c.name,
+    'none')
+FROM
+    products p
+LEFT JOIN product_categories pc ON
+    p.id = pc.product_id
+LEFT JOIN categories c ON
+    c.id = pc.category_id
